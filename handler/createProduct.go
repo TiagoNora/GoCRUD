@@ -7,6 +7,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/v1
+
+// @Summary Create product
+// @Description Create a new product
+// @Tags Products
+// @Accept json
+// @Produce json
+// @Param request body CreateProductRequest true "Request body"
+// @Success 200 {object} CreateProductResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /product [post]
 func CreateProduct(ctx *gin.Context) {
 
 	request := CreateProductRequest{}

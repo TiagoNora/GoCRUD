@@ -8,6 +8,20 @@ import (
 	"github.com/shopspring/decimal"
 )
 
+// @BasePath /api/v1
+
+// @Summary Update product
+// @Description Update a product
+// @Tags Products
+// @Accept json
+// @Produce json
+// @Param id query string true "Product Identification"
+// @Param opening body UpdateProductRequest true "Opening data to Update"
+// @Success 200 {object} UpdateProductResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /product [put]
 func UpdateProduct(ctx *gin.Context) {
 	request := UpdateProductRequest{}
 
