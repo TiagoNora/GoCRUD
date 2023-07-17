@@ -10,7 +10,7 @@ import (
 
 type Product struct {
 	gorm.Model
-	Id          string `gorm:"primaryKey"`
+	ID          string `gorm:"primaryKey"`
 	Description string
 	Designation string
 	Company     string
@@ -18,12 +18,12 @@ type Product struct {
 }
 
 func (product *Product) BeforeCreate(tx *gorm.DB) (err error) {
-	product.Id = uuid.NewString()
+	product.ID = uuid.NewString()
 	return
 }
 
 type ProductResponse struct {
-	Id          string          `json:"id"`
+	ID          string          `json:"id"`
 	CreatedAt   time.Time       `json:"createdAt"`
 	UpdatedAt   time.Time       `json:"updatedAt"`
 	DeletedAt   time.Time       `json:"deletedAt,omitempty"`
