@@ -1,4 +1,4 @@
-# GoCRUD
+# CRUD Operations in Go
 
 This is a project that demonstrates CRUD (Create, Read, Update, Delete) operations using the Go programming language.
 
