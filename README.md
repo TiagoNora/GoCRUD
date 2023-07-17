@@ -27,11 +27,11 @@ Replace {id} with the actual ID of the product you want to retrieve, update, or 
 ## Contributing
 Contributions to this project are welcome. To contribute, follow these steps:
 
-Fork the repository.
-Create a new branch.
-Make your changes and commit them.
-Push your changes to your forked repository.
-Submit a pull request.
+- Fork the repository.
+- Create a new branch.
+- Make your changes and commit them.
+- Push your changes to your forked repository.
+- Submit a pull request.
 
 ## License
 This project is licensed under the MIT License.
