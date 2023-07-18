@@ -93,3 +93,21 @@ func (r *UpdateUserRequest) Validate() error {
 	// If none of the fields were provided, return falsy
 	return fmt.Errorf("at least one valid field must be provided")
 }
+
+type TokenRequest struct {
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+func (r *TokenRequest) Validate() error {
+	if r.Email == "" && r.Password == "" {
+		return fmt.Errorf("request body is empty or malformed")
+	}
+	if r.Email == "" {
+		return errParamIsRequired("name", "string")
+	}
+	if r.Password == "" {
+		return errParamIsRequired("username", "string")
+	}
+	return nil
+}
