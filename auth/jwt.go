@@ -55,6 +55,11 @@ func ValidateToken(signedToken string) (err error) {
 		return
 	}
 
+	if claims.Role == "CUSTOMER" {
+		err = errors.New("access denied")
+		return
+	}
+
 	return
 
 }
