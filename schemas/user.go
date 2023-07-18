@@ -15,12 +15,11 @@ type User struct {
 	Username string
 	Email    string
 	Password string
-	Role     string
+	Role     string `gorm:"default:'CUSTOMER'"`
 }
 
 func (user *User) BeforeCreate(tx *gorm.DB) (err error) {
 	user.ID = uuid.NewString()
-	user.Role = "CUSTOMER"
 	return
 }
 

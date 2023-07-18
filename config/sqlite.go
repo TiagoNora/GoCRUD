@@ -26,13 +26,35 @@ func InitializeSQLite() (*gorm.DB, error) {
 		file.Close()
 	}
 	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
-	if err != nil {
-		logger.Errorf("sqlite opening error: %v", err)
-		return nil, err
-	}
 	err = db.AutoMigrate(&schemas.Product{}, &schemas.User{})
+	user := schemas.User{}
 	if err != nil {
 		logger.Errorf("sqlite automigration error: %v", err)
+		return nil, err
+	}
+	result := db.Find(&user)
+	rows := result.RowsAffected
+	if rows == 0 {
+		user := schemas.User{
+			Name:     "Admin",
+			Username: "Admin Admin",
+			Email:    "Admin",
+			Password: "adminPassword",
+			Role:     "ADMIN",
+		}
+
+		if err := user.HashPassword(user.Password); err != nil {
+			logger.Errorf("validation error: %v", err.Error())
+			return nil, err
+		}
+
+		if err := db.Create(&user).Error; err != nil {
+			logger.Errorf("error creating user: %v", err.Error())
+			return nil, err
+		}
+	}
+	if err != nil {
+		logger.Errorf("sqlite opening error: %v", err)
 		return nil, err
 	}
 	// Return the DB
