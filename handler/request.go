@@ -77,3 +77,19 @@ func (r *CreateUserRequest) Validate() error {
 	}
 	return nil
 }
+
+type UpdateUserRequest struct {
+	Name     string `json:"name"`
+	Username string `json:"username"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+}
+
+func (r *UpdateUserRequest) Validate() error {
+	// If any field is provided, validation is truthy
+	if r.Name != "" || r.Username != "" || r.Email != "" || r.Password != "" {
+		return nil
+	}
+	// If none of the fields were provided, return falsy
+	return fmt.Errorf("at least one valid field must be provided")
+}

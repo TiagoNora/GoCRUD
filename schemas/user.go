@@ -15,10 +15,12 @@ type User struct {
 	Username string
 	Email    string
 	Password string
+	Role     string
 }
 
 func (user *User) BeforeCreate(tx *gorm.DB) (err error) {
 	user.ID = uuid.NewString()
+	user.Role = "CUSTOMER"
 	return
 }
 
@@ -31,6 +33,7 @@ type UserResponse struct {
 	Username  string    `json:"username"`
 	Email     string    `json:"email"`
 	Password  string    `json:"password"`
+	Role      string    `json:"role"`
 }
 
 func (user *User) HashPassword(password string) error {
