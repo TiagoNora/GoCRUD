@@ -25,6 +25,15 @@ func CreateUser(ctx *gin.Context) {
 		Password: request.Password,
 	}
 
+	userSearched := schemas.User{}
+
+	result := db.Where("username = ? OR email = ?", user.Username, user.Email).Find(&userSearched)
+
+	if result.RowsAffected > 0 {
+		sendError(ctx, http.StatusBadRequest, "already exists a user with that username or email")
+		return
+	}
+
 	if err := user.HashPassword(user.Password); err != nil {
 		logger.Errorf("validation error: %v", err.Error())
 		sendError(ctx, http.StatusBadRequest, err.Error())
