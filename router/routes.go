@@ -15,6 +15,7 @@ func initializeRoutes(router *gin.Engine) {
 	v1 := router.Group("/api/v1")
 	{
 		InitializeRoutesProduct(v1)
+		InitializeRoutesUser(v1)
 	}
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
 }
