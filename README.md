@@ -16,13 +16,25 @@ To use this project, you need to follow these steps:
 ## Usage
 Once the project is running, you can interact with the CRUD operations using the following endpoints:
 
+##### Products Endpoints
+
 - GET /api/v1/products: Retrieve all products 
 - GET /api/v1/product?id={id}: Retrieve an product by ID 
-- POST /api/v1/product: Create a new product 
-- PUT /api/v1/product?id={id}: Update an existing product by ID 
-- DELETE /api/v1/product?id={id}: Delete an product by ID 
+- POST /api/v1/secured/product: Create a new product 
+- PUT /api/v1/secured/product?id={id}: Update an existing product by ID 
+- DELETE /api/v1/secured/product?id={id}: Delete an product by ID
 
-Replace {id} with the actual ID of the product you want to retrieve, update, or delete.
+##### Users Endpoints
+- GET /api/v1/secured/users: Retrieve all users
+- GET /api/v1/secured/user?id={id}: Retrieve an user by ID 
+- POST /api/v1/user: Create a new user
+- POST /api/v1/user/token: Generate a token
+- PUT /api/v1/secured/user?id={id}: Update an existing user by ID 
+- DELETE /api/v1/secured/user?id={id}: Delete an user by ID
+
+Replace {id} with the actual ID of the product/user you want to retrieve, update, or delete.
+
+> :warning: To interact with some funcionalities you have to authenticate.
 
 ## Contributing
 Contributions to this project are welcome. To contribute, follow these steps:
