@@ -12,6 +12,7 @@ import (
 
 // @Summary Update product
 // @Description Update a product
+// @Security bearerToken
 // @Tags Products
 // @Accept json
 // @Produce json
@@ -21,7 +22,7 @@ import (
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /product [put]
+// @Router /secured/product [put]
 func UpdateProduct(ctx *gin.Context) {
 	request := UpdateProductRequest{}
 

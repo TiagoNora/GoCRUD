@@ -12,6 +12,7 @@ import (
 
 // @Summary Delete product
 // @Description Delete a product
+// @Security bearerToken
 // @Tags Products
 // @Accept json
 // @Produce json
@@ -19,7 +20,7 @@ import (
 // @Success 200 {object} DeleteProductResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
-// @Router /product [delete]
+// @Router /secured/product [delete]
 func DeleteProduct(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {

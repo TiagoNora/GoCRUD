@@ -7,6 +7,19 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/v1
+
+// @Summary Show user
+// @Description Show a user
+// @Security bearerToken
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Param id query string true "User identification"
+// @Success 200 {object} ShowUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Router /secured/user [get]
 func ShowUser(ctx *gin.Context) {
 	id := ctx.Query("id")
 	if id == "" {
