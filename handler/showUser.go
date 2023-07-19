@@ -11,6 +11,7 @@ import (
 
 // @Summary Show user
 // @Description Show a user
+// @Security bearerToken
 // @Tags Users
 // @Accept json
 // @Produce json

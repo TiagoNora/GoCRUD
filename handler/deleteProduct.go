@@ -12,6 +12,7 @@ import (
 
 // @Summary Delete product
 // @Description Delete a product
+// @Security bearerToken
 // @Tags Products
 // @Accept json
 // @Produce json

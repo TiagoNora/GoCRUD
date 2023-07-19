@@ -12,6 +12,7 @@ import (
 
 // @Summary Delete user
 // @Description Delete a user
+// @Security bearerToken
 // @Tags Users
 // @Accept json
 // @Produce json

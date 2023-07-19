@@ -11,6 +11,7 @@ import (
 
 // @Summary Create product
 // @Description Create a new product
+// @Security bearerToken
 // @Tags Products
 // @Accept json
 // @Produce json

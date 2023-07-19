@@ -11,6 +11,7 @@ import (
 
 // @Summary Update user
 // @Description Update a user
+// @Security bearerToken
 // @Tags Users
 // @Accept json
 // @Produce json

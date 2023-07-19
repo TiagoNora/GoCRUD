@@ -1,3 +1,4 @@
+basePath: /api/v1
 definitions:
   handler.CreateProductRequest:
     properties:
@@ -171,38 +172,17 @@ definitions:
       username:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: This is a example GO API.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger GO API
+  version: "1.0"
 paths:
   /product:
-    delete:
-      consumes:
-      - application/json
-      description: Delete a product
-      parameters:
-      - description: Product identification
-        in: query
-        name: id
-        required: true
-        type: string
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.DeleteProductResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-      summary: Delete product
-      tags:
-      - Products
     get:
       consumes:
       - application/json
@@ -229,6 +209,87 @@ paths:
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
       summary: Show product
+      tags:
+      - Products
+  /products:
+    get:
+      consumes:
+      - application/json
+      description: List all products
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListProductsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: List products
+      tags:
+      - Products
+  /secured/product:
+    delete:
+      consumes:
+      - application/json
+      description: Delete a product
+      parameters:
+      - description: Product identification
+        in: query
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.DeleteProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
+      summary: Delete product
+      tags:
+      - Products
+    post:
+      consumes:
+      - application/json
+      description: Create a new product
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateProductRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateProductResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
+      summary: Create product
       tags:
       - Products
     put:
@@ -266,59 +327,12 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
       summary: Update product
       tags:
       - Products
-  /products:
-    get:
-      consumes:
-      - application/json
-      description: List all products
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.ListProductsResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-      summary: List products
-      tags:
-      - Products
-  /secured/product:
-    post:
-      consumes:
-      - application/json
-      description: Create a new product
-      parameters:
-      - description: Request body
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/handler.CreateProductRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.CreateProductResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-      summary: Create product
-      tags:
-      - Products
-  /user:
+  /secured/user:
     delete:
       consumes:
       - application/json
@@ -344,6 +358,8 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
       summary: Delete user
       tags:
       - Users
@@ -372,36 +388,9 @@ paths:
           description: Not Found
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
       summary: Show user
-      tags:
-      - Users
-    post:
-      consumes:
-      - application/json
-      description: Create a new user
-      parameters:
-      - description: Request body
-        in: body
-        name: request
-        required: true
-        schema:
-          $ref: '#/definitions/handler.CreateUserRequest'
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.CreateUserResponse'
-        "400":
-          description: Bad Request
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-      summary: Create a user
       tags:
       - Users
     put:
@@ -439,7 +428,60 @@ paths:
           description: Internal Server Error
           schema:
             $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
       summary: Update user
+      tags:
+      - Users
+  /secured/users:
+    get:
+      consumes:
+      - application/json
+      description: List all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.ListUsersResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      security:
+      - bearerToken: []
+      summary: List users
+      tags:
+      - Users
+  /user:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user
+      parameters:
+      - description: Request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.CreateUserResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Create a user
       tags:
       - Users
   /user/token:
@@ -472,23 +514,9 @@ paths:
       summary: Generate a token
       tags:
       - Users
-  /users:
-    get:
-      consumes:
-      - application/json
-      description: List all users
-      produces:
-      - application/json
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/handler.ListUsersResponse'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/handler.ErrorResponse'
-      summary: List users
-      tags:
-      - Users
+securityDefinitions:
+  bearerToken:
+    in: header
+    name: Authorization
+    type: apiKey
 swagger: "2.0"
