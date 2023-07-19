@@ -50,3 +50,25 @@ type UpdateProductResponse struct {
 	Message string                  `json:"message"`
 	Data    schemas.ProductResponse `json:"data"`
 }
+
+type CreateUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}
+
+type DeleteUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}
+type ShowUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}
+type ListUsersResponse struct {
+	Message string                 `json:"message"`
+	Data    []schemas.UserResponse `json:"data"`
+}
+type UpdateUserResponse struct {
+	Message string               `json:"message"`
+	Data    schemas.UserResponse `json:"data"`
+}

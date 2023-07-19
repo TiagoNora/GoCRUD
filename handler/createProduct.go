@@ -18,7 +18,7 @@ import (
 // @Success 200 {object} CreateProductResponse
 // @Failure 400 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /product [post]
+// @Router /secured/product [post]
 func CreateProduct(ctx *gin.Context) {
 
 	request := CreateProductRequest{}

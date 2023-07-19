@@ -7,6 +7,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/v1
+
+// @Summary Update user
+// @Description Update a user
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Param id query string true "User Identification"
+// @Param opening body UpdateUserRequest true "Opening data to Update"
+// @Success 200 {object} UpdateUserResponse
+// @Failure 400 {object} ErrorResponse
+// @Failure 404 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /secured/user [put]
 func UpdateUser(ctx *gin.Context) {
 	request := UpdateUserRequest{}
 

@@ -8,6 +8,18 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/v1
+
+// @Summary Generate a token
+// @Description Generate a new token
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Param request body TokenRequest true "Request body"
+// @Success 200 {string} string
+// @Failure 400 {object} ErrorResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /user/token [post]
 func GenerateToken(ctx *gin.Context) {
 	request := TokenRequest{}
 	ctx.BindJSON(&request)

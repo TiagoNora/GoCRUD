@@ -7,6 +7,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @BasePath /api/v1
+
+// @Summary List users
+// @Description List all users
+// @Tags Users
+// @Accept json
+// @Produce json
+// @Success 200 {object} ListUsersResponse
+// @Failure 500 {object} ErrorResponse
+// @Router /secured/users [get]
 func ListUsers(ctx *gin.Context) {
 	users := []schemas.User{}
 

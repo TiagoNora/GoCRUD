@@ -21,7 +21,7 @@ import (
 // @Failure 400 {object} ErrorResponse
 // @Failure 404 {object} ErrorResponse
 // @Failure 500 {object} ErrorResponse
-// @Router /product [put]
+// @Router /secured/product [put]
 func UpdateProduct(ctx *gin.Context) {
 	request := UpdateProductRequest{}
 
